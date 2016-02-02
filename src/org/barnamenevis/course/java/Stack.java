@@ -1,5 +1,7 @@
 package org.barnamenevis.course.java;
 
+import java.util.Arrays;
+
 /**
  * Created by Teacher3 on 2/2/2016.
  */
@@ -10,9 +12,10 @@ public class Stack {
 
     public Stack(int size) {
         elements = new int[size];
+        Arrays.fill(elements, -2);
     }
 
-    public void push(int... element) {
+    public void push(int element) {
         if (elements.length > stackSize) {
             elements[stackSize] = element;
             stackSize++;

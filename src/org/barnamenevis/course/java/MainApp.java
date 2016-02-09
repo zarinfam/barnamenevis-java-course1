@@ -4,6 +4,8 @@ package org.barnamenevis.course.java;
 import javax.swing.*;
 import java.util.ArrayList;
 
+import static java.lang.Math.*;
+
 /**
  * Created by Teacher3 on 1/12/2016.
  */
@@ -16,9 +18,11 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        String selectedColor = String.valueOf(JOptionPane.showInputDialog("Enter your favorite color :"));
+        abs(-2);
 
-        String message = Colors.valueOf(selectedColor).getName();
+//        String selectedColor = String.valueOf(JOptionPane.showInputDialog("Enter your favorite color :"));
+
+//        String message = Colors.valueOf(selectedColor).getName();
 
 //        switch (selectedColor){
 //            case GREEN : message = "سبر"; break;
@@ -28,7 +32,7 @@ public class MainApp {
 //            default: message = "incorrect color";
 //        }
 
-        JOptionPane.showMessageDialog(null, message);
+//        JOptionPane.showMessageDialog(null, message);
 
 //        Stack stack = new Stack(20);
 //        stack.push(5);

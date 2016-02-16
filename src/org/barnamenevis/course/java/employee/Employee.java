@@ -3,7 +3,7 @@ package org.barnamenevis.course.java.employee;
 /**
  * Created by Teacher3 on 2/9/2016.
  */
-public abstract class Employee {
+public abstract class Employee implements Payable{
 
     private final String firstName;
     private final String lastName;
@@ -27,5 +27,15 @@ public abstract class Employee {
 
     public String getSocialSecurityNumber() {
         return socialSecurityNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee";
+    }
+
+    @Override
+    public double getPaymentAmount() {
+        return earnings();
     }
 }

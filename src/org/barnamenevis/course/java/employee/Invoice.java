@@ -10,7 +10,7 @@ public class Invoice implements Payable, FilePrintable,ConsolePrintable{
     private double pricePerItem;
 
     public Invoice(String partNumber, String partDescription, int quantity,
-                   double pricePerItem) {
+                   double pricePerItem) throws IllegalArgumentException{
         if (quantity < 0) // validate quantity
             throw new IllegalArgumentException("Quantity must be >= 0");
 

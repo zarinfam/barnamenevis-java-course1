@@ -14,8 +14,6 @@ import java.util.ArrayList;
  */
 public class InvoiceDialog extends JDialog {
 
-
-
     private JPanel mainPanel = new JPanel();
     private JTextField partNumberFiled = new JTextField();
     private JTextField partDescriptionFiled = new JTextField();
@@ -25,7 +23,7 @@ public class InvoiceDialog extends JDialog {
     private JButton cancelButton = new JButton("Cancel");
 
     public InvoiceDialog() throws HeadlessException {
-        mainPanel.setLayout(new GridLayout(5 , 2));
+        mainPanel.setLayout(new GridLayout(5, 2));
 
         addComponents();
 
@@ -53,30 +51,58 @@ public class InvoiceDialog extends JDialog {
         cancelButton.addActionListener(new AddButtonClickListener());
     }
 
-    private class AddButtonClickListener implements ActionListener{
+    private class AddButtonClickListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == addButton) {
                 if (validateForm()) {
-                    MainForm.payableArrayList.add(new Invoice(
-                            partNumberFiled.getText(), partDescriptionFiled.getText()
-                            , Integer.parseInt(quantityFiled.getText())
-                            , Double.parseDouble(pricePerItemFiled.getText())
-                    ));
+
+                    Invoice invoice;
+
+                    try {
+                        invoice = new Invoice(
+                                partNumberFiled.getText(), partDescriptionFiled.getText()
+                                , Integer.parseInt(quantityFiled.getText())
+                                , Double.parseDouble(pricePerItemFiled.getText())
+                        );
+                        MainForm.payableArrayList.add(invoice);
+                    } catch (IllegalArgumentException | NullPointerException exception) {
+                        JOptionPane.showMessageDialog(InvoiceDialog.this, "خطا" + exception.getMessage());
+                        return;
+                    } catch (Throwable exception) {
+                        JOptionPane.showMessageDialog(InvoiceDialog.this, "خطا" + exception.getMessage());
+                        return;
+                    }
+
 
                 } else {
                     JOptionPane.showMessageDialog(InvoiceDialog.this, "Please fill all fields.");
+                    return;
                 }
 
                 JOptionPane.showMessageDialog(InvoiceDialog.this, "Add invoice");
-            }else if (e.getSource() == cancelButton) {
+            } else if (e.getSource() == cancelButton) {
                 setVisible(false);
             }
         }
     }
 
     private boolean validateForm() {
+        Component[] components = mainPanel.getComponents();
+
+        for (Component component : components) {
+            if (component instanceof JTextField) {
+                JTextField textField = (JTextField) component;
+                if (textField.getText().equals("")) {
+                    return false;
+                }
+            }
+        }
         return true;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
 }

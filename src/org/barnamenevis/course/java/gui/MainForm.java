@@ -38,25 +38,19 @@ public class MainForm extends JFrame {
         mainPanel.add(invoiceButton);
         mainPanel.add(totalButton);
 
-        invoiceButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                invoiceDialog.setModal(true);
-                invoiceDialog.setVisible(true);
-            }
+        invoiceButton.addActionListener(e -> {
+            invoiceDialog.setModal(true);
+            invoiceDialog.setVisible(true);
         });
 
-        totalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                double costs = 0;
+        totalButton.addActionListener(e -> {
+            double costs = 0;
 
-                for (Payable payable : MainForm.payableArrayList){
-                    costs += payable.getPaymentAmount();
-                }
-
-                JOptionPane.showMessageDialog(MainForm.this, "Total cost is "+costs);
+            for (Payable payable : MainForm.payableArrayList){
+                costs += payable.getPaymentAmount();
             }
+
+            JOptionPane.showMessageDialog(MainForm.this, "Total cost is "+costs);
         });
     }
 

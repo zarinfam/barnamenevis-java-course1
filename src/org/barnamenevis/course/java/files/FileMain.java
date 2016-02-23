@@ -10,9 +10,11 @@ import java.util.Scanner;
 public class FileMain {
     public static void main(String[] args) {
 
-//        File afile = new File("files"+File.separator+"test.txt");
+        File file = new File("files"+File.separator+"test.txt");
 
-        Path file = Paths.get("files" + File.separator + "test.txt");
+
+
+//        Path file = Paths.get("files" + File.separator + "test.txt");
 
         try (Scanner scanner = new Scanner(file)) {
 

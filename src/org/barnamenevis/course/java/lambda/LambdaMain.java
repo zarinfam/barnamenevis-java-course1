@@ -17,7 +17,10 @@ public class LambdaMain {
         List<String> list = Arrays.asList("Ali", "Marjan", "Naghi", "Ahmad", "Arezo");
 
         System.out.println(filterByFirstChar(list, s -> s.startsWith("A")));
+        System.out.println(filterByFirstChar(list, s -> {
 
+            return s.charAt(1) == 'a';
+        }));
 
     }
 

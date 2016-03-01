@@ -18,7 +18,14 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        abs(-2);
+
+        Integer[] integerArray = {1, 2, 3, 4, 5, 6};
+        Double[] doubleArray = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7};
+        Character[] characterArray = {'H', 'E', 'L', 'L', 'O'};
+
+        printArray(integerArray);
+        printArray(characterArray);
+
 
 //        String selectedColor = String.valueOf(JOptionPane.showInputDialog("Enter your favorite color :"));
 
@@ -34,7 +41,7 @@ public class MainApp {
 
 //        JOptionPane.showMessageDialog(null, message);
 
-//        Stack stack = new Stack(20);
+//        Stack<Integer> stack = new Stack(20);
 //        stack.push(5);
 //        stack.push(6);
 //        stack.push(7);
@@ -46,6 +53,12 @@ public class MainApp {
 //        stack.push(10);
 //        System.out.println(stack);
 
+    }
+
+    public static  <T> void printArray(T[] array){
+        for (T t : array){
+            System.out.println(t.toString());
+        }
     }
 
 }

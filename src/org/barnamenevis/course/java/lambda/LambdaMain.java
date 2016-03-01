@@ -1,6 +1,9 @@
 package org.barnamenevis.course.java.lambda;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -11,36 +14,23 @@ public class LambdaMain {
 
     public static void main(String[] args) {
 
+        List<String> list = Arrays.asList("Ali", "Marjan", "Naghi", "Ahmad", "Arezo");
 
-        Predicate<String> predicate = s -> s.length() > 5;
+        System.out.println(filterByFirstChar(list, s -> s.startsWith("A")));
 
-        System.out.println(predicate.test("ahmad"));
-        System.out.println(predicate.test("mohammad"));
 
-        Function<Integer, Integer> power = x -> x*2;
-
-        System.out.println(power.apply(10));
-
-//
-//        File folder = new File("files");
-//
-//        String[] files = folder.list((dir, name) -> Character.isDigit(name.charAt(0)));
-//
-//        for (String fileName : files) {
-//            System.out.println(fileName);
-//        }
     }
 
-    public static int[] convert(int[] inputArray, Function<Integer, Integer> f ){
+    public static List<String> filterByFirstChar(List<String> list, Function<String, Boolean> predicate){
+        List<String> filteredList = new ArrayList<>();
 
-        int[] retArray = new int[inputArray.length];
-
-        int counter = 0;
-        for (int number : inputArray) {
-            retArray[counter] = f.apply(inputArray[counter]);
-            counter++;
+        for (String name: list){
+            if (predicate.apply(name)){
+                filteredList.add(name);
+            }
         }
 
-        return retArray;
+        return filteredList;
     }
+
 }

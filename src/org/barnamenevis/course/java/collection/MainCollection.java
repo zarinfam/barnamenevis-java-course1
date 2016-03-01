@@ -16,6 +16,7 @@ public class MainCollection {
                 ,new Apple(Colors.GREEN , 113)
                 ,new Apple(Colors.GREEN , 116)
                 ,new Apple(Colors.RED , 108)
+
         );
 
 

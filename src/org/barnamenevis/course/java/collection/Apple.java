@@ -7,9 +7,9 @@ import org.barnamenevis.course.java.*;
  */
 public class Apple {
     private Colors color;
-    private float weight;
+    private int weight;
 
-    public Apple(Colors color, float weight) {
+    public Apple(Colors color, int weight) {
         this.color = color;
         this.weight = weight;
     }
@@ -22,11 +22,11 @@ public class Apple {
         this.color = color;
     }
 
-    public float getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 

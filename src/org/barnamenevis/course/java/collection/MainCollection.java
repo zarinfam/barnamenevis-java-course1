@@ -21,16 +21,10 @@ public class MainCollection {
         );
 
 
-        Optional<Integer> sum = list.stream()
-                .filter(a -> a.getColor() == Colors.RED)
-                .map(a -> a.getWeight())
-                .reduce(Integer::sum);
+        Map<Colors, List<Apple>> map = list.stream()
+                .collect(Collectors.groupingBy(Apple::getColor));
 
-        System.out.println(sum.orElse(-1));
 
-//        Map<Colors, List<Apple>> map = new HashMap<>();
-//
-//
 //        List<Apple> greenApple = new ArrayList<>();
 //        List<Apple> redApple = new ArrayList<>();
 //        List<Apple> yellowApple = new ArrayList<>();
@@ -48,8 +42,8 @@ public class MainCollection {
 //        map.put(Colors.GREEN , greenApple);
 //        map.put(Colors.RED , redApple);
 //        map.put(Colors.YELLOW , yellowApple);
-//
-//        System.out.println(map.get(Colors.GREEN));
+
+        System.out.println(map.get(Colors.GREEN));
 
     }
 
